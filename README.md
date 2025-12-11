@@ -4,19 +4,19 @@
 
 > **Projeto desenvolvido como desafio do curso "Desenvolvimento de Software na prática com GitHub Copilot" da DIO.**
 
-Uma aplicação web interativa para calcular e comparar emissões de CO₂ em diferentes meios de transporte, com integração completa ao Google Maps para cálculo automático de distâncias.
+Um **simulador de impacto ambiental para viagens** que permite calcular e comparar emissões de CO₂ em diferentes meios de transporte, com integração completa ao Google Maps para análise automática de rotas e distâncias.
 
 ## 📋 Funcionalidades
 
-A **Calculadora Eco Trip** oferece:
-- ✅ **Cálculo automático de distâncias** via Google Maps Distance Matrix API
+O **simulador de impacto ambiental** oferece:
+- ✅ **Simulação de rotas reais** via Google Maps Distance Matrix API
 - ✅ **Autocomplete de endereços** com Google Places API
-- ✅ **Cálculo de emissões de CO₂** para 4 meios de transporte (Bicicleta, Carro, Ônibus, Caminhão)
-- ✅ **Comparativo visual** entre transportes com barras de progresso
-- ✅ **Cálculo de economia** vs transporte por carro
-- ✅ **Estimativa de créditos de carbono** e custos de compensação
+- ✅ **Análise de impacto ambiental** para 4 meios de transporte (Bicicleta, Carro, Ônibus, Caminhão)
+- ✅ **Comparativo visual de pegada de carbono** com barras de progresso
+- ✅ **Cálculo de economia ambiental** vs transporte por carro
+- ✅ **Simulação de compensação ambiental** via créditos de carbono
 - ✅ **Interface responsiva** para desktop, tablet e mobile
-- ✅ **Fallback para entrada manual** de distâncias
+- ✅ **Fallback para simulação manual** de distâncias
 
 ## 🏗️ Estrutura do Projeto
 
@@ -59,26 +59,30 @@ npx serve .
 # Acesse http://localhost:8000
 ```
 
-### 📝 Utilizando a Aplicação
+### 📝 Utilizando o Simulador
 1. **Digite origem e destino** - Use o autocomplete do Google Places
-2. **Distância calculada automaticamente** - Ou marque "inserir manualmente"
+2. **Rota simulada automaticamente** - Ou marque "inserir manualmente"
 3. **Selecione o meio de transporte** - Bicicleta, Carro, Ônibus ou Caminhão
-4. **Clique em "Calcular Emissões"** - Veja resultados detalhados
-5. **Explore os comparativos** - Barras visuais e dados de economia
-6. **Confira créditos de carbono** - Custos de compensação ambiental
+4. **Clique em "Simular Impacto"** - Veja análise ambiental detalhada
+5. **Compare cenários** - Barras visuais e dados de economia ambiental
+6. **Simule compensação** - Custos de neutralização via créditos de carbono
 
 ## 📐 Fórmulas e Constantes
 
+> **Disclaimer**: Os coeficientes são estimativas baseadas em fontes oficiais (EPA, DEFRA, IPCC). Emissões reais variam conforme modelo do veículo, combustível, ocupação, tráfego e manutenção. Para cálculos precisos, consulte dados específicos.
+
 ### Emissões de CO₂ (kg por km)
-- **Bicicleta**: 0 kg/km
-- **Carro**: 0.12 kg/km
-- **Ônibus**: 0.089 kg/km
-- **Caminhão**: 0.96 kg/km
+- **Bicicleta**: 0 kg/km (transporte neutro)
+- **Carro**: 0.12 kg/km (veículo médio, gasolina)
+- **Ônibus**: 0.089 kg/km (ocupação média 40 passageiros)
+- **Caminhão**: 0.96 kg/km (categoria 3.5-7.5 toneladas)
+
+**Fontes**: EPA, DEFRA, IPCC Guidelines
 
 ### Créditos de Carbono
 - **1 crédito = 1000 kg CO₂**
-- **Custo base = R$ 12,00 por crédito**
-- **Variação: R$ 6,00 - R$ 18,00 por crédito**
+- **Custo base = R$ 45,00 por crédito** (média mercado brasileiro 2024)
+- **Variação: R$ 25,00 - R$ 85,00 por crédito** (volatilidade do mercado)
 
 ### Fórmulas
 
@@ -96,7 +100,7 @@ Economia = Emissão do Carro - Emissão do Transporte
 Créditos = Emissão Total (kg) / 1000
 
 // Custo Estimado
-Custo (R$) = Créditos × 12,00
+Custo (R$) = Créditos × 45,00
 ```
 
 ## 🎨 Design e Cores
@@ -170,6 +174,7 @@ Layout adaptável para:
 
 - **GitHub Copilot**: Utilização de IA para acelerar desenvolvimento
 - **APIs do Google**: Integração completa com Maps, Places e Distance Matrix
+- **Simulação Ambiental**: Modelagem de impactos de CO₂ por meio de transporte
 - **JavaScript Modular**: Organização de código em módulos especializados
 - **Responsividade**: Design adaptável para diferentes dispositivos
 - **Segurança Web**: Proteção de API keys e boas práticas
@@ -230,5 +235,5 @@ HTTP referrers (web sites):
 
 ---
 
-**Desenvolvido com ❤️ e GitHub Copilot IA para um planeta mais sustentável** 🌱
+**Simulador desenvolvido com ❤️ e GitHub Copilot IA para promover viagens sustentáveis** 🌱
 
