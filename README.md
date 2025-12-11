@@ -1,61 +1,71 @@
 # Calculadora Eco Trip 🌍
 
-Uma aplicação web interativa para calcular e comparar emissões de CO₂ em diferentes meios de transporte.
+🌐 **[Acesse o projeto online](https://udinei.github.io/MyCalculadoraEcoTrip/)**
 
-## 📋 Descrição
+> **Projeto desenvolvido como desafio do curso "Desenvolvimento de Software na prática com GitHub Copilot" da DIO.**
 
-A **Calculadora Eco Trip** permite aos usuários:
-- Calcular emissões de CO₂ para diferentes meios de transporte (Bicicleta, Carro, Ônibus, Caminhão)
-- Comparar as emissões relativas entre transportes
-- Calcular economias vs transporte por carro
-- Estimar créditos de carbono necessários para compensar emissões
-- Simular jornadas entre diferentes origens e destinos
+Uma aplicação web interativa para calcular e comparar emissões de CO₂ em diferentes meios de transporte, com integração completa ao Google Maps para cálculo automático de distâncias.
+
+## 📋 Funcionalidades
+
+A **Calculadora Eco Trip** oferece:
+- ✅ **Cálculo automático de distâncias** via Google Maps Distance Matrix API
+- ✅ **Autocomplete de endereços** com Google Places API
+- ✅ **Cálculo de emissões de CO₂** para 4 meios de transporte (Bicicleta, Carro, Ônibus, Caminhão)
+- ✅ **Comparativo visual** entre transportes com barras de progresso
+- ✅ **Cálculo de economia** vs transporte por carro
+- ✅ **Estimativa de créditos de carbono** e custos de compensação
+- ✅ **Interface responsiva** para desktop, tablet e mobile
+- ✅ **Fallback para entrada manual** de distâncias
 
 ## 🏗️ Estrutura do Projeto
 
 ```
-carbon-calculator/
-├── index.html                  # Estrutura + todos os scripts inline ou linkados
+mycalculadora-eco-trip/
+├── index.html                  # Página principal com integração Google Maps
 ├── css/
-│   └── style.css              # Estilos completos
+│   └── style.css              # Estilos responsivos completos
 ├── js/
-│   ├── routes-data.js         # ⭐ Dados de rotas (objeto global)
-│   ├── config.js              # Constantes CO2 (objeto global)
-│   ├── calculator.js          # Lógica de cálculos (funções globais)
-│   ├── ui.js                  # Manipulação DOM (funções globais)
-│   └── app.js                 # Inicialização e eventos
-├── assets/                     # Imagens, ícones (SVGs da internet)
-└── README.md                   # Este arquivo
+│   ├── app.js                 # Inicialização e eventos principais
+│   ├── calculator.js          # Lógica de cálculos de CO₂
+│   ├── config.js              # Constantes e configurações
+│   ├── distance-api.js        # Integração Google Maps Distance Matrix
+│   ├── routes-data.js         # Dados de rotas pré-definidas
+│   └── ui.js                  # Manipulação da interface
+├── assets/
+│   ├── icons/                 # Ícones dos meios de transporte
+│   ├── favicon.svg            # Ícone do site
+│   └── logo.svg               # Logo da aplicação
+├── .gitignore                  # Arquivos ignorados pelo Git
+└── README.md                   # Documentação do projeto
 ```
 
 ## 🚀 Como Usar
 
-### 1. Abrir no Navegador
-Abra o arquivo `index.html` no seu navegador web (Chrome, Firefox, Safari, Edge).
+### 🌐 Online (Recomendado)
+Acesse diretamente: **[https://udinei.github.io/MyCalculadoraEcoTrip/](https://udinei.github.io/MyCalculadoraEcoTrip/)**
 
+### 💻 Desenvolvimento Local
 ```bash
-# No Windows (PowerShell)
-Invoke-Item index.html
+# Clone o repositório
+git clone https://github.com/udinei/MyCalculadoraEcoTrip.git
+cd MyCalculadoraEcoTrip
 
-# Ou simplesmente arraste o arquivo para o navegador
+# Inicie um servidor local
+py -m http.server 8000
+# ou
+npx serve .
+
+# Acesse http://localhost:8000
 ```
 
-### 2. Preencher o Formulário
-- Digite a **Origem** (ex: São Paulo, SP)
-- Digite o **Destino** (ex: Rio de Janeiro, RJ)
-- Escolha a **Distância** (desabilitada por padrão; marque "Inserir distância manualmente" para editar)
-- Selecione o **Meio de Transporte**
-
-### 3. Calcular Emissões
-Clique no botão **"Calcular Emissões"** para:
-- Exibir um loader por 1,5 segundos (simulação)
-- Atualizar todos os resultados
-- Mostrar resumo, comparativo e créditos de carbono
-
-### 4. Explorar Resultados
-- **Resumo da Emissão**: rota, distância, emissão total e economia vs carro
-- **Comparativo**: cards para cada transporte com barras de progresso
-- **Créditos de Carbono**: número de créditos necessários e custo estimado
+### 📝 Utilizando a Aplicação
+1. **Digite origem e destino** - Use o autocomplete do Google Places
+2. **Distância calculada automaticamente** - Ou marque "inserir manualmente"
+3. **Selecione o meio de transporte** - Bicicleta, Carro, Ônibus ou Caminhão
+4. **Clique em "Calcular Emissões"** - Veja resultados detalhados
+5. **Explore os comparativos** - Barras visuais e dados de economia
+6. **Confira créditos de carbono** - Custos de compensação ambiental
 
 ## 📐 Fórmulas e Constantes
 
@@ -102,66 +112,44 @@ Custo (R$) = Créditos × 12,00
 | Background | Cinza Claro | #f9fafb |
 | Borda | Cinza Borda | #e5e7eb |
 
-## 📦 Dependências
+## 🛠️ Tecnologias Utilizadas
 
-- **Nenhuma!** O projeto usa apenas HTML, CSS e JavaScript vanilla.
-- Ícones são carregados via CDN (Flaticon).
+- **Frontend**: HTML5, CSS3, JavaScript ES6+ (Vanilla)
+- **APIs**: Google Maps JavaScript API, Google Places API, Distance Matrix API
+- **Hospedagem**: GitHub Pages
+- **Desenvolvimento**: Python HTTP Server (local)
+- **Controle de Versão**: Git com .gitignore para proteção de API keys
 
-## 🔧 Estrutura de Scripts
+## 🔧 Arquitetura do Código
 
-### routes-data.js
-```javascript
-const routesData = {
-  routes: [...],
-  getRoute(id) { ... },
-  addRoute(origin, destination, distance) { ... }
-}
-```
+### 🗺️ distance-api.js
+- Integração com Google Maps Distance Matrix API
+- Autocomplete de endereços com Places API
+- Fallback para cálculo de distância em linha reta (Haversine)
+- Tratamento de erros e casos especiais
 
-### config.js
-```javascript
-const config = {
-  co2Emissions: {...},
-  carbonCreditCost: 12.00,
-  priceRange: {...},
-  transports: {...}
-}
-```
+### 🧮 calculator.js
+- Cálculos de emissões de CO₂ por meio de transporte
+- Comparativos percentuais e economia vs carro
+- Estimativa de créditos de carbono e custos
+- Fórmulas baseadas em dados científicos
 
-### calculator.js
-```javascript
-const calculator = {
-  calculateEmission(distance, transport) { ... },
-  calculateAllEmissions(distance) { ... },
-  calculateRelativePercentage(emission, carEmission) { ... },
-  calculateSavings(transportEmission, carEmission) { ... },
-  calculateCarbonCredits(emission) { ... },
-  calculateCost(credits) { ... }
-}
-```
+### 🎨 ui.js
+- Manipulação dinâmica da interface
+- Atualização de resultados em tempo real
+- Animações e feedback visual
+- Responsividade e acessibilidade
 
-### ui.js
-```javascript
-const ui = {
-  selectTransport(transport) { ... },
-  setDistance(distance) { ... },
-  updateFormValues(origin, destination, distance) { ... },
-  toggleManualDistance(checked) { ... },
-  updateResults() { ... },
-  updateSummaryCard(...) { ... },
-  updateComparativeCards(...) { ... },
-  updateCarbonCredits(...) { ... },
-  simulateCalculation(...) { ... }
-}
-```
+### ⚙️ config.js
+- Constantes de emissões por transporte
+- Configurações de créditos de carbono
+- Dados de referência e fórmulas
 
-### app.js
-Inicializa event listeners para:
-- Seleção de transporte
-- Input de distância
-- Checkbox de entrada manual
-- Botão de cálculo
-- Botão de compensação
+### 🚀 app.js
+- Inicialização da aplicação
+- Event listeners e interações
+- Integração entre módulos
+- Callback do Google Maps
 
 ## 📱 Responsividade
 
@@ -170,15 +158,31 @@ Layout adaptável para:
 - **Tablet** (640px-1024px): Grid 2 colunas
 - **Mobile** (<640px): Stack vertical
 
-## ✨ Funcionalidades Futuras
+## 🔒 Segurança e Boas Práticas
 
-- [ ] Integração com API de distâncias (Google Maps)
-- [ ] Histórico de cálculos salvos
-- [ ] Gráficos e visualizações mais avançadas
-- [ ] Autenticação de usuário
-- [ ] Sistema de pagamento para compensação
-- [ ] Exportar relatório em PDF
-- [ ] Integração com redes sociais
+- ✅ **API Key protegida** com restrições de domínio no Google Cloud
+- ✅ **Arquivo .gitignore** para proteger configurações sensíveis
+- ✅ **Separação de ambientes** (desenvolvimento e produção)
+- ✅ **Tratamento de erros** robusto nas chamadas de API
+- ✅ **Fallbacks** para casos de falha na API
+
+## 🎯 Aprendizados do Projeto
+
+- **GitHub Copilot**: Utilização de IA para acelerar desenvolvimento
+- **APIs do Google**: Integração completa com Maps, Places e Distance Matrix
+- **JavaScript Modular**: Organização de código em módulos especializados
+- **Responsividade**: Design adaptável para diferentes dispositivos
+- **Segurança Web**: Proteção de API keys e boas práticas
+
+## ✨ Possíveis Melhorias Futuras
+
+- [ ] Histórico de cálculos com LocalStorage
+- [ ] Gráficos interativos com Chart.js
+- [ ] PWA (Progressive Web App)
+- [ ] Modo escuro/claro
+- [ ] Compartilhamento de resultados
+- [ ] Múltiplas rotas simultâneas
+- [ ] Integração com APIs de transporte público
 
 ## 📄 Licença
 
@@ -188,23 +192,43 @@ Este projeto é de código aberto e livre para uso e modificação.
 
 **Desenvolvido com ❤️ para um planeta mais sustentável** 🌱
 
-## 🌐 Integração com Distance Matrix (Google Maps)
+## 🌐 Configuração do Google Maps (Para Desenvolvedores)
 
-Esta versão suporta obter a distância automaticamente entre Origem e Destino usando o Google Maps Distance Matrix (via Google Maps JavaScript API).
+### 1. Obter API Key
+- Acesse [Google Cloud Console](https://console.cloud.google.com/)
+- Ative: Maps JavaScript API, Places API, Distance Matrix API
+- Crie uma API Key
 
-Passos para ativar:
-
-1. Obtenha uma chave de API do Google Cloud com o serviço Maps JavaScript API habilitado.
-2. No `index.html` substitua `YOUR_API_KEY` na tag de script pelo seu API key:
-
-```html
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+### 2. Configurar Restrições
+```
+HTTP referrers (web sites):
+- https://seudominio.github.io/*
+- http://localhost:8000/*
+- http://127.0.0.1:8000/*
 ```
 
-3. A chamada de distância é feita no cliente pelo `js/distance-api.js` usando `google.maps.DistanceMatrixService`.
+### 3. Implementar no Código
+```html
+<script async defer 
+  src="https://maps.googleapis.com/maps/api/js?key=SUA_API_KEY&libraries=places&callback=initMapCallback">
+</script>
+```
 
-Observações importantes:
-- A Google Maps JavaScript API deve ter restrições de uso adequadas (domínios permitidos) para segurança.
-- Se preferir não expor a chave no cliente, use um proxy/endpoint no servidor que invoque a API Web Service de Distance Matrix.
-- Em caso de erro ao obter distância automaticamente, a aplicação exibirá uma mensagem e você poderá inserir a distância manualmente.
+### 4. Estrutura de Segurança
+- API Key restrita por domínio
+- Arquivo `js/config-local.js` no .gitignore
+- Separação entre desenvolvimento e produção
+
+---
+
+## 👨‍💻 Desenvolvido por
+
+**Udinei Silva**  
+📧 [Contato](mailto:udineisilva@gmail.com)  
+🔗 [LinkedIn](https://www.linkedin.com/in/udinei-silva-1b029b5b/)  
+🐙 [GitHub](https://github.com/udinei)
+
+---
+
+**Desenvolvido com ❤️ e GitHub Copilot IA para um planeta mais sustentável** 🌱
 
