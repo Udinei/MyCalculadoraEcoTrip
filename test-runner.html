@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testes - Calculadora Eco Trip</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .test-suite { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+    .test-pass { color: #16b78a; }
+    .test-fail { color: #ef4444; }
+    .test-pending { color: #f59e0b; }
+    pre { background: #f5f5f5; padding: 10px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Testes - Calculadora Eco Trip</h1>
+  
+  <div class="test-suite">
+    <h2>📊 Resumo dos Testes</h2>
+    <ul>
+      <li><strong>calculator.test.js</strong> - Testes unitários dos cálculos de CO₂</li>
+      <li><strong>distance-api.test.js</strong> - Testes da integração Google Maps</li>
+      <li><strong>ui.test.js</strong> - Testes da interface do usuário</li>
+      <li><strong>integration.test.js</strong> - Testes de fluxo completo</li>
+      <li><strong>api-fallback.test.js</strong> - Testes de cenários de erro</li>
+    </ul>
+  </div>
+
+  <div class="test-suite">
+    <h2>🚀 Como Executar</h2>
+    
+    <h3>Opção 1: Jest (Recomendado)</h3>
+    <pre><code># Instalar dependências
+npm install --save-dev jest @jest/globals
+
+# Executar todos os testes
+npm test
+
+# Executar com coverage
+npm test -- --coverage
+
+# Executar testes específicos
+npm test calculator.test.js</code></pre>
+
+    <h3>Opção 2: Navegador (Desenvolvimento)</h3>
+    <pre><code># Incluir scripts no HTML
+&lt;script src="js/config.js">&lt;/script>
+&lt;script src="js/calculator.js">&lt;/script>
+&lt;script src="js/distance-api.js">&lt;/script>
+&lt;script src="js/ui.js">&lt;/script>
+
+# Executar testes manualmente
+console.log(calculator.calculateEmission(100, 'car')); // 12</code></pre>
+  </div>
+
+  <div class="test-suite">
+    <h2>📋 Casos de Teste Cobertos</h2>
+    
+    <h3>✅ Cálculos de Emissões</h3>
+    <ul>
+      <li>Emissões por tipo de transporte</li>
+      <li>Cálculos de economia vs carro</li>
+      <li>Créditos de carbono e custos</li>
+      <li>Percentuais relativos</li>
+    </ul>
+
+    <h3>✅ Integração Google Maps</h3>
+    <ul>
+      <li>Chamadas bem-sucedidas da API</li>
+      <li>Tratamento de erros (REQUEST_DENIED, ZERO_RESULTS)</li>
+      <li>Fallback Haversine</li>
+      <li>Timeouts e problemas de rede</li>
+    </ul>
+
+    <h3>✅ Interface do Usuário</h3>
+    <ul>
+      <li>Seleção de transportes</li>
+      <li>Entrada manual vs automática</li>
+      <li>Atualização de resultados</li>
+      <li>Feedback visual (loader, cores)</li>
+    </ul>
+
+    <h3>✅ Fluxos de Integração</h3>
+    <ul>
+      <li>Rota São Paulo → Rio de Janeiro</li>
+      <li>Mudança entre transportes</li>
+      <li>Diferentes distâncias</li>
+      <li>Validações e tratamento de erros</li>
+    </ul>
+
+    <h3>✅ Cenários de Fallback</h3>
+    <ul>
+      <li>API Google Maps indisponível</li>
+      <li>Erros de API Key e referrer</li>
+      <li>Ativação automática do modo manual</li>
+      <li>Recuperação e retry</li>
+    </ul>
+  </div>
+
+  <div class="test-suite">
+    <h2>📊 Cobertura Esperada</h2>
+    <ul>
+      <li><strong>calculator.js</strong>: 100% (funções puras)</li>
+      <li><strong>distance-api.js</strong>: 90% (mocks da API)</li>
+      <li><strong>ui.js</strong>: 85% (manipulação DOM)</li>
+      <li><strong>app.js</strong>: 70% (event listeners)</li>
+      <li><strong>config.js</strong>: 100% (constantes)</li>
+    </ul>
+  </div>
+
+  <div class="test-suite">
+    <h2>🔧 Configuração package.json</h2>
+    <pre><code>{
+  "name": "calculadora-eco-trip",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "@jest/globals": "^29.0.0"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["&lt;rootDir>/test-setup.js"]
+  }
+}</code></pre>
+  </div>
+
+  <script>
+    // Testes básicos inline para demonstração
+    console.log('🧪 Executando testes básicos...');
+    
+    // Teste simples do calculator (se disponível)
+    if (typeof calculator !== 'undefined') {
+      const testResult = calculator.calculateEmission(100, 'car');
+      console.log(testResult === 12 ? '✅ Calculator test passed' : '❌ Calculator test failed');
+    }
+    
+    // Teste simples do config (se disponível)
+    if (typeof config !== 'undefined') {
+      const hasEmissions = config.co2Emissions && config.co2Emissions.car === 0.12;
+      console.log(hasEmissions ? '✅ Config test passed' : '❌ Config test failed');
+    }
+    
+    console.log('📋 Para testes completos, use Jest: npm test');
+  </script>
+</body>
+</html>
